@@ -6,5 +6,6 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return getCompareSnapshotsPlugin(on, config);
     },
+    "baseUrl": "https://deckofcardsapi.com/api/deck"
   },
 });
