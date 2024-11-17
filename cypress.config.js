@@ -6,6 +6,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return getCompareSnapshotsPlugin(on, config);
     },
-    "baseUrl": "https://deckofcardsapi.com/api/deck"
+    baseUrl: 'https://deckofcardsapi.com/api/deck',
+    specPattern: 'cypress/**/*.cy.{js,jsx,ts,tsx}'
   },
 });
