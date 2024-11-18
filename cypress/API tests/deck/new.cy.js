@@ -1,4 +1,4 @@
-describe("Deck of Cards API - /new", () => {
+describe("New endpoint", () => {
   it("should shuffle a new deck", () => {
     cy.request({
       method: "POST",

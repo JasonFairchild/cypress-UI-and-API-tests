@@ -1,4 +1,4 @@
-describe("Deck of Cards API", () => {
+describe("Draw endpoint", () => {
   beforeEach("Create a deck", () => {
     cy.request("POST", "/new").then((response) => {
       cy.wrap(response.body.deck_id).as("deckId");
