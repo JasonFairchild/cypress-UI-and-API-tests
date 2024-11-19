@@ -5,6 +5,8 @@ describe("Checkers UI", () => {
   // this test is very long and has other quirks.
   it("Plays a game with various moves until won", () => {
     cy.viewport(1280, 720);
+    // Removes all the annoying requests due to ads on the site from command log
+    cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
     cy.visit("https://www.gamesforthebrain.com/game/checkers/");
     cy.contains("h1", "Checkers");
     cy.contains("Select an orange piece to move.");
@@ -12,7 +14,11 @@ describe("Checkers UI", () => {
     cy.contains("a", "Rules").should("have.attr", "href", "https://en.wikipedia.org/wiki/English_draughts#Starting_position");
 
     cy.get("#board").find('[name="space42"]').click();
+    cy.get("#board").find('[name="space42"]').should("have.attr", "src", "you2.gif");
     cy.get("#board").find('[name="space33"]').click();
+    cy.log(cy.get("#board").find('[name="space33"]'));
+    cy.get("#board").find('[name="space33"]').should("have.attr", "src").and("includes", "you2.gif");
+    cy.get("#board").find('[name="space33"]').should("have.attr", "src", "you1.gif");
     cy.get("#board").find('[name="space04"]').should("have.attr", "src", "me1.gif");
     cy.contains("Make a move.");
     // There is a very good chance that these snapshots will not pass on other machines as they can be very sensitive to OS and other small differences
