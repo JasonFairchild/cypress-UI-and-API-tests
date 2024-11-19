@@ -9,5 +9,5 @@
 // ***********************************************
 //
 
-import compareSnapshotCommand from 'cypress-image-diff-js/command';
+import compareSnapshotCommand from "cypress-image-diff-js/command";
 compareSnapshotCommand();
